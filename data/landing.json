@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Integradores de Tecnología",
+    "highlight": "lo aprendemos.",
+    "subtitle": "Soporte técnico, seguridad electrónica y redes de fibra óptica en Margarita. Más de 23 años resolviendo retos tecnológicos con precisión y pasión."
+  },
+  "contact": {
+    "whatsapp": "584120000000",
+    "instagram": "https://www.instagram.com/raqservicios",
+    "address": "Isla de Margarita, Estado Nueva Esparta, Venezuela.",
+    "mapUrl": "https://maps.google.com"
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Soporte Técnico",
+      "description": "Diagnóstico y reparación experta de Laptops y PCs. Mantenimiento preventivo, cambio de componentes y optimización de software.",
+      "items": ["Limpieza Interna", "Instalación de SO", "Recuperación de Datos"],
+      "icon": "Laptop",
+      "color": "orange"
+    },
+    {
+      "id": 2,
+      "title": "Seguridad Hikvision",
+      "description": "Partner Oficial Certificado. Instalación de sistemas de CCTV, alarmas inteligentes y control de acceso con tecnología de vanguardia.",
+      "items": ["Cámaras IP 4K", "Alarmas Residenciales", "Cerco Eléctrico"],
+      "icon": "ShieldCheck",
+      "color": "purple"
+    },
+    {
+      "id": 3,
+      "title": "Fibra Óptica",
+      "description": "Contratistas certificados para instalación de última milla. Garantizamos la máxima velocidad y estabilidad en tu conexión.",
+      "items": ["Empalmes por Fusión", "Certificación de Puntos", "Redes GPON"],
+      "icon": "Wifi",
+      "color": "orange"
+    }
+  ]
+}
