@@ -1,9 +1,9 @@
 // Contenido de la página: lectura desde Postgres, con respaldo en data/landing.json y, si todo
 // falla, los textos por defecto (lib/landing-defaults.ts). Sin "use server": no es una acción pública.
 
-import { readFile } from 'fs/promises';
-import { join } from 'path';
 import { eq } from 'drizzle-orm';
+// Importado (no leído con fs): en Cloudflare Workers no hay sistema de archivos con data/ dentro.
+import landingFallback from '@/data/landing.json';
 import { db, landingConfig, LANDING_KEY } from '@/lib/db';
 import { DEFAULT_DATA, mergeWithDefaults, type LandingData } from '@/lib/landing-defaults';
 
@@ -25,10 +25,9 @@ export async function loadLandingData(): Promise<LandingData> {
     console.warn('[landing] Base de datos no disponible, se usa data/landing.json:', error);
   }
   try {
-    const file = await readFile(join(process.cwd(), 'data', 'landing.json'), 'utf-8');
-    return mergeWithDefaults(JSON.parse(file));
+    return mergeWithDefaults(landingFallback as Partial<LandingData>);
   } catch (error) {
-    console.warn('[landing] data/landing.json no disponible, se usan los textos por defecto:', error);
+    console.warn('[landing] data/landing.json no válido, se usan los textos por defecto:', error);
   }
   return DEFAULT_DATA;
 }

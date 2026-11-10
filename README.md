@@ -16,7 +16,7 @@ proyecto por su lado.
 
 | Variable | Para qué |
 |---|---|
-| `DATABASE_URL` | Postgres donde está `landing_config` (en Railway, la misma base de RAQtools). |
+| `DATABASE_URL` | Postgres donde está `landing_config` (Supabase, la misma base de RAQtools). En Cloudflare no se usa: la conexión llega por el enlace Hyperdrive de `wrangler.jsonc`. |
 | `ACCESS_KEY` | Clave para entrar al editor. |
 | `AUTH_SECRET` | Firma la cookie de sesión del editor (mínimo 16 caracteres). |
 
@@ -29,4 +29,14 @@ npm run build
 npm run lint
 ```
 
-Railway despliega solo con cada push a `main`.
+## Despliegue
+
+La web corre en Cloudflare Workers (OpenNext), en `www.serviciosraq.com`. Un push a `main` no
+despliega nada: hay que compilar y subir a mano desde una copia del repo en WSL/Linux sin archivos
+`.env*` (OpenNext los mete en el Worker):
+
+```bash
+npm run cf:deploy   # opennextjs-cloudflare build + deploy
+```
+
+Los secretos `ACCESS_KEY` y `AUTH_SECRET` se cargan con `npx wrangler secret put`.

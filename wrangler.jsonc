@@ -1,0 +1,28 @@
+// Worker de Cloudflare para la web de RAQ Servicios (serviciosraq.com). Compilar y desplegar desde una
+// copia limpia del repo en WSL/Linux (`npm run cf:deploy`): OpenNext incluye en el Worker los .env*
+// que encuentre en la carpeta.
+//
+// Secretos (con `wrangler secret put`, no aquí): AUTH_SECRET, ACCESS_KEY.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "serviciosraq-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "serviciosraq-web" }
+  ],
+  "hyperdrive": [
+    {
+      "binding": "HYPERDRIVE",
+      "id": "0c70c91604cd4d3d97a77c0c7aa2491f"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
