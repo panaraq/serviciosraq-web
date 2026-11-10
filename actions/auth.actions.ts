@@ -2,14 +2,21 @@
 
 import { cookies } from 'next/headers';
 import { EDITOR_COOKIE, SESSION_TTL_SECONDS, createSessionValue, passwordMatches } from '@/lib/session';
+import { beginLoginAttempt, loginSucceeded } from '@/lib/login-attempts';
 
 export async function login(formData: FormData): Promise<{ success?: true; error?: string }> {
   if (!process.env.ACCESS_KEY) {
     console.error('[login] ACCESS_KEY no está configurada: el acceso queda bloqueado.');
     return { error: 'El acceso no está configurado en el servidor. Contacta al administrador.' };
   }
+  // Límite de intentos por IP: antes se podía probar la clave sin parar.
+  const waitMinutes = await beginLoginAttempt();
+  if (waitMinutes) {
+    return { error: `Demasiados intentos fallidos. Espera ${waitMinutes} minuto${waitMinutes === 1 ? '' : 's'} e intenta de nuevo.` };
+  }
   const password = String(formData.get('password') ?? '');
   if (!passwordMatches(password)) return { error: 'Clave incorrecta. Vuelve a intentarlo.' };
+  await loginSucceeded();
 
   let value: string;
   try {
