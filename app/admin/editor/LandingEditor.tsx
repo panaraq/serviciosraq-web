@@ -64,7 +64,7 @@ export default function LandingEditor() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
-  const [logoPreview, setLogoPreview] = useState<string>('/logo.png');
+  const [logoPreview, setLogoPreview] = useState<string>('/servicios-raq.png');
   const [uploadingLogo, setUploadingLogo] = useState(false);
   const logoInputRef = useRef<HTMLInputElement>(null);
 

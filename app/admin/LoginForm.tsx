@@ -32,7 +32,7 @@ export default function LoginForm() {
     <div className="min-h-screen bg-[#0a0a0a] flex flex-col items-center justify-center p-6">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center space-y-4">
-          <img src="/logo.png" alt="RAQ Servicios" className="h-16 w-auto mx-auto object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]" />
+          <img src="/servicios-raq.png" alt="RAQ Servicios" className="h-16 w-auto mx-auto object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]" />
           <h1 className="font-display text-4xl font-black tracking-tighter text-white">Editor de la web</h1>
           <p className="text-gray-500 font-medium">Ingresa la clave de acceso para editar la página de RAQ Servicios.</p>
         </div>

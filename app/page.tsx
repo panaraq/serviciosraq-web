@@ -61,8 +61,9 @@ export default async function LandingPage() {
   const igUrl = data.contact.instagram || 'https://www.instagram.com/raqservicios';
   const igUsername = igUrl.replace(/\/$/, '').split('/').pop() || 'raqservicios';
 
-  // Use Base64 logo from DB (persists across Railway deploys), fallback to static /logo.png
-  const logoSrc: string = data.logoBase64 || '/logo.png';
+  // Logo subido desde el editor (guardado en la base) o, si no hay, el de Servicios RAQ que usa Porti
+  // (public/servicios-raq.png, fondo transparente).
+  const logoSrc: string = data.logoBase64 || '/servicios-raq.png';
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-orange-500/30">
@@ -121,7 +122,7 @@ export default async function LandingPage() {
               <img 
                 src={logoSrc} 
                 alt="RAQ Servicios" 
-                className="h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(249,115,22,0.5)]"
+                className="h-full w-auto object-contain drop-shadow-[0_0_6px_rgba(249,115,22,0.3)]"
               />
             </div>
           </div>
@@ -363,8 +364,8 @@ export default async function LandingPage() {
       <footer className="py-20 border-t border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-16">
           <div className="flex flex-col items-center md:items-start gap-6">
-            <div className="h-12">
-              <img src={logoSrc} alt="Logo RAQ" className="h-full w-auto object-contain" style={{ filter: 'drop-shadow(0 0 8px rgba(249,115,22,0.3))' }} />
+            <div className="h-14">
+              <img src={logoSrc} alt="Servicios RAQ" className="h-full w-auto object-contain" style={{ filter: 'drop-shadow(0 0 8px rgba(249,115,22,0.3))' }} />
             </div>
             <div className="text-white text-[10px] font-black uppercase tracking-[0.3em] text-center md:text-left leading-loose">
               © {new Date().getFullYear()} RAQ Servicios. <br />

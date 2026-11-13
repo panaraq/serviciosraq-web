@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: "Soporte técnico, seguridad HIKVISION certificada y fibra óptica en Margarita.",
     url: "https://serviciosraq.com",
     siteName: "RAQ Servicios",
-    images: [{ url: "/logo.png", width: 1024, height: 1024, alt: "RAQ Servicios Logo" }],
+    images: [{ url: "/servicios-raq.png", width: 720, height: 277, alt: "Servicios RAQ" }],
     locale: "es_VE",
     type: "website",
   },
