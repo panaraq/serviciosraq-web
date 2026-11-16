@@ -1,5 +1,5 @@
-// Sesión del editor de la web. La contraseña es ACCESS_KEY (la misma clave de acceso que ya
-// usaba el "Portal Admin") y la cookie va firmada con AUTH_SECRET: una cookie que no emitió el
+// Sesión del editor de la web. La contraseña es ACCESS_KEY (propia de esta web desde 2026-11-16;
+// antes era la misma del Panel de RAQtools) y la cookie va firmada con AUTH_SECRET: una cookie que no emitió el
 // servidor no sirve. Sin 'use server': no es una acción pública.
 
 import { createHmac, timingSafeEqual } from 'crypto';
